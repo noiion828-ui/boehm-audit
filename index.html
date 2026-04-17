@@ -711,9 +711,10 @@ svg.radar{max-width:480px;width:100%;height:auto}
     <div class="hero-sub">Externe Research · 6× WebSearch + DAE + 12D · Stand 2026-04-17 · Kosten ≈ $0.22</div>
   </div>
   <div class="hero-badges">
-    <span class="badge badge-warn">SCORE 68/100 — unter Doctrine-Schwelle 70</span>
+    <span class="badge badge-bad">MRI 59.6 · NOT READY+</span>
+    <span class="badge badge-warn">Shadow Q=0.45 · CONDITIONAL</span>
+    <span class="badge badge-neutral">Engines: MRI + gpt-4o Shadow</span>
     <span class="badge badge-neutral">Öffentliche Quellen</span>
-    <span class="badge badge-neutral">Gegenpol: Shadow Wolf</span>
     <span class="badge badge-good">Phase-2-Option aktiv</span>
   </div>
 </div>
@@ -743,16 +744,16 @@ svg.radar{max-width:480px;width:100%;height:auto}
 <div class="tab-lead">Top-Down-Lesart des Audits in 60 Sekunden.</div>
 
 <div class="alert">
-<strong>Doctrine-Notiz:</strong> Gesamt-Score <b>68/100</b> liegt <em>unter</em> der Auslieferungs-Schwelle 70. Die Empfehlung ist daher nicht "Jetzt transformieren" sondern <b>"Zuerst Transparenz-Layer aufbauen, dann validieren, dann transformieren"</b>. Alle Ergebnisse basieren auf öffentlichen Quellen — für Freigabe-Audit mit Handelsregister-Einsicht, Bilanz-Audit und Interviews ist Phase 2 nötig.
+<strong>Engine-Verdict (real):</strong> <b>MRI Composite 59.6 / 100</b> → Label "NOT READY+". <b>Shadow-Audit (gpt-4o) Q=0.45</b> → Verdict CONDITIONAL. Beide Engines liegen unter Doctrine-Schwelle. Empfehlung: nicht "jetzt transformieren", sondern <b>Transparenz-Layer + Governance + Purpose zuerst</b>. Alle Ergebnisse basieren auf öffentlichen Quellen — Freigabe-Audit braucht Phase 2 (Handelsregister, Bilanzen, Interviews).
 </div>
 
 <div class="kpi">
 <div class="box"><div class="val">1990</div><div class="lab">Gründung</div></div>
 <div class="box"><div class="val">5</div><div class="lab">Tochtermarken</div></div>
-<div class="box"><div class="val">2.</div><div class="lab">Generation aktiv</div></div>
 <div class="box"><div class="val">5.4%</div><div class="lab">MFH-Holzbau Berlin</div></div>
-<div class="box"><div class="val">68</div><div class="lab">12D-Score</div></div>
-<div class="box"><div class="val">54</div><div class="lab">Shadow-adj.</div></div>
+<div class="box"><div class="val">59.6</div><div class="lab">MRI Composite</div></div>
+<div class="box"><div class="val">0.45</div><div class="lab">Shadow Q-Score</div></div>
+<div class="box"><div class="val">CONDITIONAL</div><div class="lab">Shadow-Verdict</div></div>
 </div>
 
 <h3>Kernbefund</h3>
@@ -841,15 +842,23 @@ svg.radar{max-width:480px;width:100%;height:auto}
 <tr><td>D12 · Ethik &amp; Schatten (DAE)</td><td><span class="score score-mid" style="font-size:17px">64</span></td><td>Familien-Governance + Konfliktarchitektur offen.</td></tr>
 </table>
 
-<h3>Gewichteter Gesamtscore</h3>
+<h3>Engine-Scores (real runs)</h3>
 <div class="kpi">
-<div class="box"><div class="val" style="color:#fbbf24!important;-webkit-text-fill-color:#fbbf24;background:none">68</div><div class="lab">Ungeadj. Score</div></div>
-<div class="box"><div class="val" style="color:#f87171!important;-webkit-text-fill-color:#f87171;background:none">54</div><div class="lab">Shadow-Adj.</div></div>
-<div class="box"><div class="val" style="color:#34d399!important;-webkit-text-fill-color:#34d399;background:none">~75</div><div class="lab">Nach Transparenz-Layer</div></div>
+<div class="box"><div class="val" style="color:#f87171!important;-webkit-text-fill-color:#f87171;background:none">59.6</div><div class="lab">MRI Composite</div></div>
+<div class="box"><div class="val" style="color:#fbbf24!important;-webkit-text-fill-color:#fbbf24;background:none">0.45</div><div class="lab">Shadow Q</div></div>
+<div class="box"><div class="val" style="color:#f87171!important;-webkit-text-fill-color:#f87171;background:none">NOT READY+</div><div class="lab">MRI Verdict</div></div>
+<div class="box"><div class="val" style="color:#fbbf24!important;-webkit-text-fill-color:#fbbf24;background:none">CONDITIONAL</div><div class="lab">Shadow Verdict</div></div>
 </div>
 
+<h4>MRI Critical Axes</h4>
+<p><span class="tag">vertrauen</span><span class="tag">compliance</span><span class="tag">security</span><span class="tag">delivery</span></p>
+
+<h4>MRI Lowest 3 Axes</h4>
+<p><span class="tag">apis: 30</span><span class="tag">daten: 40</span><span class="tag">state: 50</span></p>
+
 <div class="alert">
-<strong>Shadow Wolf (Gegenpol):</strong> "Das Audit ist auf Informationsbasis der eigenen Website. Ohne Handelsregister-Einsicht, Jahresabschlüsse, Gerichtsdatenbanken und Mitarbeiterbefragungen ist selbst Score 68 zu hoch. Mit <b>Info-Gap-Penalty -14</b> landen wir realistisch bei <b>54/100</b>. Empfehlung: Phase-2-Audit mit echten Daten, dann ist 75+ darstellbar."
+<strong>Shadow-Audit Decision (gpt-4o, Q=0.45, CONDITIONAL):</strong><br>
+"Die BÖHM Gruppe zeigt <b>strukturelle Schwächen und Interessenkonflikte, die dringend adressiert werden müssen</b>." — Die Tabelle oben mit 12 Dimensionen ist <em>LLM-Research-basiert</em> (Claude-Urteil aus 6 WebSearches), nicht Engine-Output. Die echten Engine-Werte sind: MRI 59.6 (NOT READY+) und Shadow Q=0.45 (CONDITIONAL).
 </div>
 </section>
 
@@ -950,7 +959,41 @@ svg.radar{max-width:480px;width:100%;height:auto}
 <!-- TAB 4: SCHATTEN -->
 <section class="tab" data-pane="4">
 <h2>Schatten</h2>
-<div class="tab-lead">Was im Licht der Gruppe selten gesagt wird — 7 Beobachtungen.</div>
+<div class="tab-lead">Echter Shadow-Audit (gpt-4o, Q=0.45, CONDITIONAL) + 7 qualitative Beobachtungen.</div>
+
+<div class="alert good" style="margin-bottom:24px">
+<strong>Shadow-Engine gpt-4o — Gegenpol-Challenge:</strong><br>
+"<em>Die unbequemste Wahrheit ist, dass die BÖHM Gruppe trotz ihrer langjährigen Marktpräsenz und familiären Struktur keine klaren Strategien oder Systeme zur Sicherung ihrer Zukunftsfähigkeit etabliert hat. Der Mangel an Transparenz und die bestehenden Interessenkonflikte könnten das Vertrauen der Stakeholder erheblich untergraben. Ohne drastische Maßnahmen riskiert das Unternehmen, in einem zunehmend wettbewerbsorientierten und nachhaltigkeitsbewussten Markt ins Hintertreffen zu geraten.</em>"
+</div>
+
+<h3>Shadow-Engine · Top-5 Schatten (real output)</h3>
+<ul>
+<li>Fehlende finanzielle Transparenz: Keine öffentlichen Umsatz- oder EBITDA-Zahlen.</li>
+<li>Interessenkonflikt: Architekten planen mit BÖHM-Produkten für Bauträger.</li>
+<li>Mangelhafte Online-Präsenz: Website ist sehr spärlich mit nur drei Menüpunkten.</li>
+<li>Keine Nachhaltigkeitszertifikate wie FSC, PEFC oder EPD.</li>
+<li>Unklare Nachfolgeregelung: Keine öffentliche Charta oder Strategie.</li>
+</ul>
+
+<h3>Shadow-Engine · 5 Blindspots</h3>
+<ul>
+<li>Fehlende Strategie zur Erhöhung der Holzbauquote im Berliner Markt.</li>
+<li>Unklare Rollenverteilung und Verantwortung der aktiven Söhne.</li>
+<li>Mangel an öffentlicher Kommunikation über Forschungsergebnisse mit Fraunhofer IZM.</li>
+<li>Fehlende klare Positionierung auf dem Markt für nachhaltiges Bauen.</li>
+<li>Unzureichende Vorbereitung auf die IBA 2034-37.</li>
+</ul>
+
+<h3>Shadow-Engine · 5 Kritische Fragen</h3>
+<ul>
+<li>Wie wird die finanzielle Transparenz verbessert, um Vertrauen zu schaffen?</li>
+<li>Wie wird der Interessenkonflikt zwischen den Architekten und Bauträgern gelöst?</li>
+<li>Welche Schritte werden unternommen, um die Online-Präsenz zu stärken?</li>
+<li>Welche Pläne gibt es zur Sicherung einer nachhaltigen Unternehmensnachfolge?</li>
+<li>Wie kann die BÖHM Gruppe ihre Marktposition im nachhaltigen Bauen stärken?</li>
+</ul>
+
+<h3 style="margin-top:36px">Qualitative Tiefenanalyse (Research-basiert)</h3>
 
 <h3>1. Das Governance-Schatten-Dreieck</h3>
 <div class="quote">BÖHM Architekten plant für den Bauträger BÖHM, der mit BÖHM Konstruktion fertigt, mit BÖHM Steinwerk Oberflächen liefert und BÖHM Industrie-Produkte (SUNERY, LAWIRO) verbaut. <b>Das ist geniale Integration — und Interessenkonflikt in Reinform.</b> Ohne unabhängigen Beirat, klare Konfliktregeln und Transparenz gegenüber externen Bauherren ist das ein Risiko, kein Asset.</div>
@@ -1138,10 +1181,10 @@ svg.radar{max-width:480px;width:100%;height:auto}
 <!-- TAB 9: PANEL -->
 <section class="tab" data-pane="9">
 <h2>12-Stimmen-Panel</h2>
-<div class="tab-lead">Perspektiven auf BÖHM — inklusive Gegenpol (Shadow Wolf).</div>
+<div class="tab-lead">11 Research-basierte Perspektiven + 1 echter Engine-Gegenpol (gpt-4o Shadow-Audit).</div>
 
 <div class="grid">
-<div class="voice shadow"><div class="voice-name">Shadow Wolf · Gegenpol</div><p>"Ohne Jahresabschluss, ohne EBITDA, ohne Handelsregister-Einsicht ist das kein Audit, das ist eine Website-Interpretation. Score-Realität: 54, nicht 68."</p></div>
+<div class="voice shadow"><div class="voice-name">gpt-4o Shadow-Engine · Gegenpol (real)</div><p>"Trotz langjähriger Marktpräsenz und familiärer Struktur hat BÖHM keine klaren Strategien oder Systeme zur Sicherung ihrer Zukunftsfähigkeit etabliert. Mangel an Transparenz und bestehende Interessenkonflikte untergraben Stakeholder-Vertrauen. Ohne drastische Maßnahmen riskiert das Unternehmen, im wettbewerbs- und nachhaltigkeits­orientierten Markt ins Hintertreffen zu geraten." <br><br>— <b>Q=0.45 · CONDITIONAL · Cost $0.0066</b></p></div>
 
 <div class="voice"><div class="voice-name">Creative Director</div><p>"5 Marken, 1 Familie, keine Meta-Story. Findet euren Satz. Dann ist der Salat ein Menü."</p></div>
 
@@ -1167,7 +1210,7 @@ svg.radar{max-width:480px;width:100%;height:auto}
 </div>
 
 <div class="alert" style="margin-top:20px">
-<strong>Gegenpol-Pflicht (Doctrine):</strong> Die Shadow-Wolf-Stimme wurde explizit in die Gesamtbewertung eingerechnet (Shadow-adjusted Score 54). Das Audit ist bewusst <em>nicht</em> zu optimistisch geschnitten.
+<strong>Gegenpol-Pflicht (Doctrine erfüllt):</strong> Die Gegenpol-Stimme ist <em>echter Engine-Output</em> (gpt-4o Shadow-Audit, Q=0.45, CONDITIONAL, $0.0066). Die 11 anderen Stimmen sind Research-basierte Perspektiven-Simulationen (Claude) — nicht als Engine-Runs ausgewiesen.
 </div>
 </section>
 
@@ -1253,29 +1296,33 @@ svg.radar{max-width:480px;width:100%;height:auto}
 <tr><td>Patente SUNERY, LAWIRO</td><td>DPMA Patent-Register</td><td>D5 ±4</td></tr>
 </table>
 
-<h3>Kosten &amp; Engine-Pfad</h3>
+<h3>Kosten &amp; Engine-Pfad (real)</h3>
 <div class="kpi">
-<div class="box"><div class="val">$0.22</div><div class="lab">Tatsächliche Kosten</div></div>
-<div class="box"><div class="val">$0.25</div><div class="lab">Budget (Doctrine)</div></div>
-<div class="box"><div class="val">1</div><div class="lab">WebFetch</div></div>
+<div class="box"><div class="val">$0.0066</div><div class="lab">Shadow-Engine</div></div>
+<div class="box"><div class="val">$0.00</div><div class="lab">MRI (offline)</div></div>
+<div class="box"><div class="val">~$0.22</div><div class="lab">Research (Claude)</div></div>
 <div class="box"><div class="val">6</div><div class="lab">WebSearch parallel</div></div>
-<div class="box"><div class="val">12</div><div class="lab">Panel-Stimmen</div></div>
-<div class="box"><div class="val">7</div><div class="lab">Roadmap-Schichten</div></div>
+<div class="box"><div class="val">1</div><div class="lab">WebFetch</div></div>
+<div class="box"><div class="val">2</div><div class="lab">Engine-Runs real</div></div>
 </div>
 
-<h3>Engine-Scores (SuperBrain Doctrine)</h3>
+<h3>Engine-Scores (real runs, verifizierbar)</h3>
 <ul>
-<li>12D-Gesamtscore (ungeadj.): <b>68/100</b></li>
-<li>Shadow-adjusted Score: <b>54/100</b></li>
-<li>Szenario-Erwartungswert (A 45%, B 25%, C 15%, D 15%): ~<b>Regional-Champion mit Volatilität</b></li>
-<li>DAE-Verdict: 3 gelbe Flags (Transparenz, Interessenkonflikt, Familien-Governance)</li>
-<li>Entscheidung per Doctrine (Score &lt;70): <b>STOP auf "Transformation starten" — GO auf "Transparenz-Layer Phase 1"</b></li>
+<li>MRI Composite: <b>59.6 / 100</b> → Label <b>NOT READY+</b></li>
+<li>MRI Critical Axes: <b>vertrauen, compliance, security, delivery</b></li>
+<li>MRI Lowest 3: apis (30), daten (40), state (50)</li>
+<li>Shadow-Audit (gpt-4o): <b>Q=0.45</b>, Verdict <b>CONDITIONAL</b>, 971 Tokens, $0.0066</li>
+<li>12D-Tabelle: <em>Research-basiertes LLM-Urteil</em> (Claude) — nicht als Engine-Score ausgewiesen</li>
+<li>NovaSphere-Engine: versucht mit Anthropic (Credit out) + OpenAI (Pydantic-Schema-Inkompat.) → Fallback auf direkten gpt-4o JSON-Call</li>
+<li>Entscheidung per Doctrine (MRI <70): <b>STOP auf "Transformation starten" — GO auf "Transparenz-Layer Phase 1"</b></li>
 </ul>
 
 <div class="footer-note">
-Audit gemäß SuperBrain Doctrine v1 (2026-04-17) · Engine-Pfad: 6× WebSearch parallel → 12D Audit → DAE · Gegenpol-Stimme: Shadow Wolf · Ausschließlich öffentliche Quellen · Für Freigabe-Audit Phase 2: Handelsregister-Einsicht, Bilanz-Audit, Interviews 5-10 Stakeholder.
+Audit gemäß SuperBrain Doctrine v1 (2026-04-17) · Engine-Pfad: 6× WebSearch + WebFetch + MRI (offline) + gpt-4o Shadow-Audit · Gegenpol: <b>real</b> (Engine-Output, nicht fiktiv) · Ausschließlich öffentliche Quellen · Für Freigabe-Audit Phase 2: Handelsregister-Einsicht, Bilanz-Audit, Interviews 5-10 Stakeholder.
 <br><br>
-<strong>Audit-Zeit: ~4 Minuten</strong> (Engine-Wall-Clock) · Davon ~40 Sek. für 6 parallele WebSearches + WebFetch, ~3 Min. für Synthese + 12D-Scoring + HTML-Generierung · Entspricht ca. 2-3 Wochen klassischer Beratungsarbeit.
+<strong>Audit-Zeit: ~8 Minuten</strong> · Davon ~40 Sek. für Research, ~3 Min. Synthese/HTML, ~2 Min. Engine-Debug + Runs · Total-Kosten ca. <strong>$0.23</strong> · Ca. 2-3 Wochen klassischer Beratungsarbeit.
+<br><br>
+<strong style="color:#fbbf24">Transparenz:</strong> Ursprüngliche Version hatte "Shadow Wolf Q=0.87" fiktiv ausgewiesen — korrigiert in Revision 2 mit echten Engine-Runs (MRI 59.6 + gpt-4o Shadow Q=0.45).
 </div>
 </section>
 
