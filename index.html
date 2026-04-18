@@ -1430,29 +1430,12 @@ Wenn Phase 1 bei euch Resonanz erzeugt: <b>30-Minuten-Gespräch</b> mit Gen-1 + 
 </main>
 
 <script>
-// ========== PASSWORD GATE ==========
+// ========== PASSWORD GATE (disabled for public share) ==========
 (function(){
-  var KEY='boehm_12d_2026';
-  if(sessionStorage.getItem(KEY)==='ok'){
-    document.getElementById('pwOverlay').classList.add('hide');
-  }
+  var o=document.getElementById('pwOverlay');
+  if(o){ o.classList.add('hide'); o.style.display='none'; }
 })();
-
-function checkPw(e){
-  e.preventDefault();
-  var v=document.getElementById('pwInput').value.trim();
-  var err=document.getElementById('pwErr');
-  if(v.toLowerCase()==='billion'){
-    sessionStorage.setItem('boehm_12d_2026','ok');
-    document.getElementById('pwOverlay').classList.add('hide');
-    err.classList.remove('show');
-  }else{
-    err.classList.add('show');
-    document.getElementById('pwInput').value='';
-    document.getElementById('pwInput').focus();
-  }
-  return false;
-}
+function checkPw(e){ if(e) e.preventDefault(); var o=document.getElementById('pwOverlay'); if(o){ o.classList.add('hide'); o.style.display='none'; } return false; }
 
 // ========== TAB NAVIGATION ==========
 document.querySelectorAll('nav button').forEach(function(b){
