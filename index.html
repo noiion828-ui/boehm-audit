@@ -686,7 +686,198 @@ svg.radar{max-width:480px;width:100%;height:auto}
   .tab{display:block!important;page-break-after:always}
   body::before{display:none}
   body{background:#fff;color:#000}
+  .fb-block,.fb-send-bar{display:none!important}
 }
+
+/* ========== FEEDBACK SYSTEM ========== */
+.fb-block{
+  margin-top:56px;padding:28px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:linear-gradient(160deg,rgba(124,92,255,.04) 0%,rgba(59,130,246,.02) 100%);
+  position:relative;
+}
+.fb-block::before{
+  content:'';position:absolute;top:-1px;left:24px;right:24px;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(124,92,255,.4),transparent);
+}
+.fb-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.fb-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 10px;border-radius:20px;
+  background:rgba(124,92,255,.15);color:#c4b5fd;
+  font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+}
+.fb-title{font-size:15px;font-weight:600;color:var(--text);margin:0}
+.fb-hint{font-size:12px;color:var(--text-3);margin-bottom:18px;line-height:1.55}
+.fb-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+@media(max-width:720px){.fb-grid{grid-template-columns:1fr}}
+.fb-slider-wrap{
+  padding:14px 16px;border:1px solid var(--border);border-radius:10px;
+  background:rgba(10,14,26,.4);
+}
+.fb-slider-label{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:var(--text-2);margin-bottom:10px;font-weight:500;
+}
+.fb-slider-label .fb-val{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;font-weight:600;color:var(--brand);
+  min-width:36px;text-align:right;
+}
+.fb-slider-tip{font-size:10px;color:var(--text-3);margin-top:6px;line-height:1.4}
+.fb-slider{
+  width:100%;height:6px;border-radius:3px;
+  -webkit-appearance:none;appearance:none;
+  background:linear-gradient(90deg,#2a3247 0%,#3d4863 100%);
+  outline:none;cursor:pointer;
+}
+.fb-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:18px;height:18px;border-radius:50%;
+  background:linear-gradient(135deg,#7c5cff,#3b82f6);
+  box-shadow:0 4px 12px rgba(124,92,255,.4);
+  cursor:pointer;border:2px solid #0d1220;
+}
+.fb-slider::-moz-range-thumb{
+  width:18px;height:18px;border-radius:50%;
+  background:linear-gradient(135deg,#7c5cff,#3b82f6);
+  border:2px solid #0d1220;cursor:pointer;
+}
+.fb-handlung{
+  display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;
+}
+.fb-handlung-btn{
+  flex:1;min-width:90px;
+  padding:10px 12px;border-radius:8px;
+  border:1px solid var(--border);
+  background:transparent;color:var(--text-2);
+  font-size:12px;font-weight:500;cursor:pointer;
+  transition:all .15s;font-family:inherit;
+}
+.fb-handlung-btn:hover{border-color:var(--border-hi);color:var(--text)}
+.fb-handlung-btn.active[data-val="0"]{background:rgba(16,185,129,.15);border-color:#10b981;color:#34d399}
+.fb-handlung-btn.active[data-val="50"]{background:rgba(245,158,11,.15);border-color:#f59e0b;color:#fbbf24}
+.fb-handlung-btn.active[data-val="100"]{background:rgba(239,68,68,.15);border-color:#ef4444;color:#f87171}
+.fb-textarea{
+  width:100%;min-height:90px;padding:12px 14px;
+  border-radius:10px;border:1px solid var(--border);
+  background:rgba(10,14,26,.4);color:var(--text);
+  font-family:inherit;font-size:13px;line-height:1.55;
+  resize:vertical;outline:none;transition:border-color .15s;
+}
+.fb-textarea:focus{border-color:var(--brand)}
+.fb-textarea::placeholder{color:var(--text-3)}
+.fb-focus-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.fb-focus-chip{
+  padding:4px 10px;border-radius:14px;
+  border:1px solid var(--border);
+  background:transparent;color:var(--text-3);
+  font-size:11px;cursor:pointer;transition:all .15s;
+  font-family:inherit;
+}
+.fb-focus-chip:hover{border-color:var(--brand);color:var(--brand)}
+.fb-saved-hint{
+  display:flex;align-items:center;gap:6px;
+  margin-top:10px;font-size:11px;color:var(--text-3);
+  font-family:'JetBrains Mono',monospace;
+}
+.fb-saved-hint.show{color:#34d399}
+.fb-saved-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--text-3);
+  transition:background .3s;
+}
+.fb-saved-hint.show .fb-saved-dot{background:#34d399;box-shadow:0 0 8px #34d399}
+
+/* Send-Bar (bottom fixed) */
+.fb-send-bar{
+  position:fixed;bottom:24px;right:24px;z-index:500;
+  display:flex;gap:10px;padding:12px;
+  background:rgba(13,18,32,.95);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--border-hi);
+  border-radius:14px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(124,92,255,.15);
+}
+.fb-send-bar.empty{display:none}
+.fb-send-btn{
+  padding:10px 16px;border-radius:8px;
+  border:1px solid var(--border);
+  background:transparent;color:var(--text);
+  font-size:12px;font-weight:600;cursor:pointer;
+  transition:all .15s;font-family:inherit;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.fb-send-btn:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-1px)}
+.fb-send-btn.primary{
+  background:linear-gradient(135deg,#7c5cff,#3b82f6);
+  color:white;border-color:transparent;
+}
+.fb-send-btn.primary:hover{box-shadow:0 8px 24px rgba(124,92,255,.4);color:white}
+.fb-send-counter{
+  padding:6px 10px;font-size:11px;color:var(--text-2);
+  font-family:'JetBrains Mono',monospace;
+  display:inline-flex;align-items:center;
+}
+
+/* Analysis tab */
+.fb-analysis-hero{
+  padding:32px;border-radius:16px;
+  background:linear-gradient(135deg,rgba(124,92,255,.08) 0%,rgba(34,211,238,.04) 100%);
+  border:1px solid var(--border);
+  margin-bottom:24px;
+}
+.fb-analysis-stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:14px;margin:20px 0;
+}
+.fb-stat{
+  padding:18px;border-radius:12px;
+  background:rgba(18,24,39,.6);border:1px solid var(--border);
+  text-align:center;
+}
+.fb-stat-val{
+  font-size:28px;font-weight:700;letter-spacing:-.02em;
+  font-family:'JetBrains Mono',monospace;margin-bottom:4px;
+  background:var(--grad-hero);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;
+}
+.fb-stat-lab{font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em}
+.fb-section-row{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px;align-items:center;
+  padding:12px 16px;border-radius:10px;border:1px solid var(--border);
+  margin-bottom:8px;background:rgba(18,24,39,.4);
+  font-size:13px;
+}
+.fb-section-row.empty{opacity:.4}
+.fb-section-row .fb-sname{font-weight:500}
+.fb-section-row .fb-sval{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  text-align:center;
+}
+.fb-section-row .fb-shand{text-align:center;font-size:11px}
+.fb-section-row .fb-shand.major{color:#f87171;font-weight:600}
+.fb-section-row .fb-shand.minor{color:#fbbf24}
+.fb-section-row .fb-shand.keiner{color:#34d399}
+.fb-section-row .fb-shand.none{color:var(--text-3)}
+.fb-divergenz-flag{
+  display:inline-block;padding:2px 8px;border-radius:10px;
+  font-size:10px;margin-left:8px;
+  background:rgba(239,68,68,.15);color:#f87171;
+}
+.fb-empty{
+  padding:60px 40px;text-align:center;color:var(--text-3);
+  border:2px dashed var(--border);border-radius:12px;
+}
+.fb-empty-icon{font-size:36px;margin-bottom:12px;opacity:.5}
+.fb-reset-btn{
+  padding:10px 16px;border-radius:8px;
+  border:1px solid rgba(239,68,68,.4);
+  background:transparent;color:#f87171;
+  font-size:12px;cursor:pointer;font-family:inherit;
+  transition:all .15s;
+}
+.fb-reset-btn:hover{background:rgba(239,68,68,.1)}
 </style>
 </head>
 <body>
@@ -734,6 +925,7 @@ svg.radar{max-width:480px;width:100%;height:auto}
 <button data-tab="10">DAE Ethik</button>
 <button data-tab="11">Quellen</button>
 <button class="phase2" data-tab="12">Phase-2-Option</button>
+<button data-tab="13" style="color:#c4b5fd">★ Mein Feedback</button>
 </nav>
 
 <main>
@@ -1427,7 +1619,57 @@ Wenn Phase 1 bei euch Resonanz erzeugt: <b>30-Minuten-Gespräch</b> mit Gen-1 + 
 </div>
 </section>
 
+<!-- TAB 13: MEIN FEEDBACK -->
+<section class="tab" data-pane="13">
+<h2>★ Mein Feedback</h2>
+<div class="tab-lead">Deine persönliche Lesart des Audits — lokal gespeichert, du entscheidest wann und wohin es geht.</div>
+
+<div class="fb-analysis-hero">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap">
+<div style="flex:1;min-width:280px">
+<div class="fb-badge" style="margin-bottom:12px">Lokal · Privat · Offline-fähig</div>
+<h3 style="margin-top:0">Diese Ansicht aggregiert deine eigenen Eingaben — nicht die anderer Leser.</h3>
+<p style="color:var(--text-2);font-size:14px">Alle Bewertungen werden ausschließlich in deinem Browser (localStorage) gespeichert. Es gibt keinen Server, keine Analytics, kein Tracking. Download und Versand erfolgen erst, wenn du sie aktiv auslöst.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<button class="fb-send-btn primary" onclick="fbDownload('md')">↓ Markdown-Report</button>
+<button class="fb-send-btn" onclick="fbDownload('json')">↓ JSON-Export</button>
+<button class="fb-send-btn" onclick="fbMailto()">✉ Per Mail senden</button>
+<button class="fb-reset-btn" onclick="fbReset()">↺ Alles zurücksetzen</button>
+</div>
+</div>
+
+<div class="fb-analysis-stats" id="fbStats">
+<!-- populated by JS -->
+</div>
+</div>
+
+<h3>Überblick nach Sektion</h3>
+<div id="fbOverview">
+<!-- populated by JS -->
+</div>
+
+<div id="fbEmpty" class="fb-empty" style="display:none">
+<div class="fb-empty-icon">◌</div>
+<div style="font-weight:600;color:var(--text-2);margin-bottom:6px">Noch kein Feedback erfasst</div>
+<div style="font-size:13px">Öffne eine Sektion und nutze den Feedback-Block am Ende jeder Seite. Deine Eingaben erscheinen hier als Übersicht.</div>
+</div>
+
+<div class="alert" style="margin-top:32px">
+<strong>Governance-Hinweis:</strong> Diese Resonanz-Werte sind <b>persönliche Lesarten für den Dialog</b> — keine Audit-Noten und kein Crowd-Voting. Unterschiedliche Leser können unterschiedliche Scores vergeben; das ist gewollt und zeigt, wo Perspektiven divergieren. Der Auditor entscheidet, wie das Feedback in mögliche Anpassungen einfließt — dies ist kein Abstimmungssystem.
+</div>
+
+</section>
+
 </main>
+
+<!-- SEND BAR (floating) -->
+<div class="fb-send-bar empty" id="fbSendBar">
+  <span class="fb-send-counter" id="fbSendCounter">0 Sektionen bewertet</span>
+  <button class="fb-send-btn" onclick="fbDownload('md')" title="Als Markdown speichern">↓ MD</button>
+  <button class="fb-send-btn" onclick="fbDownload('json')" title="Als JSON speichern">↓ JSON</button>
+  <button class="fb-send-btn primary" onclick="fbMailto()" title="Per Mail an Auditor senden">✉ Senden</button>
+</div>
 
 <script>
 // ========== PASSWORD GATE (disabled for public share) ==========
@@ -1542,6 +1784,394 @@ function animateBars(){
 
 // initial bar animation
 setTimeout(animateBars,200);
+
+// ============================================================
+// ========== INTELLIGENT FEEDBACK SYSTEM ======================
+// (NovaSphere Panel v1 Apr-2026 — 3 Slider statt 1, Fokus-Chips,
+//  lokaler Storage, JSON+MD Export, mailto-Send, Analyse-Tab)
+// ============================================================
+(function(){
+  var FB_KEY='boehm_12d_feedback_v1';
+  var AUDIT_VERSION='Revision 3 — Apr 2026';
+  var AUDITOR_EMAIL='noiion828@gmail.com';
+
+  var SECTION_META = [
+    {id:'0', name:'Executive Summary',   short:'Executive'},
+    {id:'1', name:'Firma & Marken',      short:'Firma'},
+    {id:'2', name:'12D Scores',          short:'12D Scores'},
+    {id:'3', name:'Dimensionen Detail',  short:'Dimensionen'},
+    {id:'4', name:'Schatten-Audit',      short:'Schatten'},
+    {id:'5', name:'Potenziale',          short:'Potenziale'},
+    {id:'6', name:'Markt 2026',          short:'Markt 2026'},
+    {id:'7', name:'Szenarien 2030',      short:'Szenarien 2030'},
+    {id:'8', name:'Roadmap 7 Hebel',     short:'Roadmap 7'},
+    {id:'9', name:'NovaSphere Panel',    short:'Panel'},
+    {id:'10',name:'DAE Ethik',           short:'DAE Ethik'},
+    {id:'11',name:'Quellen',             short:'Quellen'},
+    {id:'12',name:'Phase-2-Option',      short:'Phase 2'}
+  ];
+
+  var FOCUS_CHIPS = [
+    {label:'Was fehlt?',           stub:'Was fehlt mir hier: '},
+    {label:'Wo anderer Meinung?',  stub:'Hier sehe ich es anders: '},
+    {label:'Welche Nachfrage?',    stub:'Konkrete Nachfrage: '},
+    {label:'Stimmt aus meiner Sicht', stub:'Das trifft meine Situation: '}
+  ];
+
+  function loadFb(){
+    try { return JSON.parse(localStorage.getItem(FB_KEY)||'{}'); }
+    catch(e){ return {}; }
+  }
+  function saveFb(d){
+    d._meta={updated:new Date().toISOString(),version:AUDIT_VERSION};
+    try { localStorage.setItem(FB_KEY, JSON.stringify(d)); } catch(e){}
+  }
+
+  function buildBlock(meta){
+    var sec = document.querySelector('.tab[data-pane="'+meta.id+'"]');
+    if(!sec) return;
+    var block = document.createElement('div');
+    block.className='fb-block';
+    block.dataset.fbSection=meta.id;
+    block.innerHTML = (
+      '<div class="fb-head">'+
+        '<span class="fb-badge">◆ Dein Feedback zu dieser Sektion</span>'+
+      '</div>'+
+      '<div class="fb-title">Wie liest du '+escapeHtml(meta.name)+'?</div>'+
+      '<div class="fb-hint">Persönliche Lesart für den Dialog — keine Audit-Note. Bleibt lokal in deinem Browser, bis du aktiv exportierst oder sendest.</div>'+
+
+      '<div class="fb-grid">'+
+        '<div class="fb-slider-wrap">'+
+          '<div class="fb-slider-label">'+
+            '<span>Zustimmung zur Analyse</span>'+
+            '<span class="fb-val" data-role="zVal">–</span>'+
+          '</div>'+
+          '<input type="range" class="fb-slider" min="0" max="100" step="1" data-role="zSlider" value="50">'+
+          '<div class="fb-slider-tip">0 = widerspreche klar · 100 = trifft genau mein Bild</div>'+
+        '</div>'+
+        '<div class="fb-slider-wrap">'+
+          '<div class="fb-slider-label">'+
+            '<span>Relevanz für unsere Situation</span>'+
+            '<span class="fb-val" data-role="rVal">–</span>'+
+          '</div>'+
+          '<input type="range" class="fb-slider" min="0" max="100" step="1" data-role="rSlider" value="50">'+
+          '<div class="fb-slider-tip">0 = betrifft uns nicht · 100 = zentrales Thema bei uns</div>'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="fb-slider-wrap" style="margin-bottom:18px">'+
+        '<div class="fb-slider-label">'+
+          '<span>Handlungsbedarf aus deiner Sicht</span>'+
+        '</div>'+
+        '<div class="fb-handlung">'+
+          '<button type="button" class="fb-handlung-btn" data-role="hBtn" data-val="0">Keiner — stimmt so</button>'+
+          '<button type="button" class="fb-handlung-btn" data-role="hBtn" data-val="50">Minor — Nuance</button>'+
+          '<button type="button" class="fb-handlung-btn" data-role="hBtn" data-val="100">Major — Nacharbeit nötig</button>'+
+        '</div>'+
+      '</div>'+
+
+      '<div class="fb-focus-chips" data-role="chips">'+
+        FOCUS_CHIPS.map(function(c){
+          return '<button type="button" class="fb-focus-chip" data-stub="'+escapeHtml(c.stub)+'">'+escapeHtml(c.label)+'</button>';
+        }).join('')+
+      '</div>'+
+      '<textarea class="fb-textarea" data-role="text" placeholder="Freies Feedback zu dieser Sektion (wird lokal gespeichert)..."></textarea>'+
+      '<div class="fb-saved-hint" data-role="savedHint"><span class="fb-saved-dot"></span><span data-role="savedText">noch nicht gespeichert</span></div>'
+    );
+    sec.appendChild(block);
+    wireBlock(block, meta.id);
+  }
+
+  function escapeHtml(s){
+    return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function wireBlock(block, sectionId){
+    var fb = loadFb();
+    var data = fb[sectionId] || {};
+    var zS = block.querySelector('[data-role=zSlider]');
+    var zV = block.querySelector('[data-role=zVal]');
+    var rS = block.querySelector('[data-role=rSlider]');
+    var rV = block.querySelector('[data-role=rVal]');
+    var hBtns = block.querySelectorAll('[data-role=hBtn]');
+    var chips = block.querySelectorAll('.fb-focus-chip');
+    var txt = block.querySelector('[data-role=text]');
+    var hint = block.querySelector('[data-role=savedHint]');
+    var hintT = block.querySelector('[data-role=savedText]');
+
+    // initial render
+    if(typeof data.z==='number'){ zS.value=data.z; zV.textContent=data.z; paintSlider(zS,data.z); } else { zV.textContent='–'; }
+    if(typeof data.r==='number'){ rS.value=data.r; rV.textContent=data.r; paintSlider(rS,data.r); } else { rV.textContent='–'; }
+    if(typeof data.h==='number'){
+      hBtns.forEach(function(b){ b.classList.toggle('active', parseInt(b.dataset.val,10)===data.h); });
+    }
+    if(data.text){ txt.value=data.text; }
+    refreshHint(hint, hintT, data);
+
+    var saveTimer=null;
+    function scheduleSave(){
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(function(){
+        var cur = loadFb();
+        cur[sectionId] = collect();
+        saveFb(cur);
+        flashSaved(hint, hintT, cur[sectionId]);
+        updateSendBar();
+        updateAnalysis();
+      }, 350);
+    }
+    function collect(){
+      var hActive = block.querySelector('[data-role=hBtn].active');
+      var hasAny = (zV.textContent!=='–') || (rV.textContent!=='–') || !!hActive || (txt.value.trim().length>0);
+      if(!hasAny) return {};
+      var o = {touched_at:new Date().toISOString()};
+      if(zV.textContent!=='–') o.z = parseInt(zS.value,10);
+      if(rV.textContent!=='–') o.r = parseInt(rS.value,10);
+      if(hActive) o.h = parseInt(hActive.dataset.val,10);
+      if(txt.value.trim()) o.text = txt.value.trim();
+      return o;
+    }
+
+    zS.addEventListener('input', function(){ zV.textContent=zS.value; paintSlider(zS,zS.value); scheduleSave(); });
+    rS.addEventListener('input', function(){ rV.textContent=rS.value; paintSlider(rS,rS.value); scheduleSave(); });
+    hBtns.forEach(function(b){
+      b.addEventListener('click', function(){
+        var wasActive = b.classList.contains('active');
+        hBtns.forEach(function(x){ x.classList.remove('active'); });
+        if(!wasActive) b.classList.add('active');
+        scheduleSave();
+      });
+    });
+    chips.forEach(function(chip){
+      chip.addEventListener('click', function(){
+        var stub = chip.dataset.stub;
+        var cur = txt.value;
+        if(cur && !cur.endsWith('\n')) cur += '\n';
+        txt.value = cur + stub;
+        txt.focus();
+        txt.setSelectionRange(txt.value.length, txt.value.length);
+        scheduleSave();
+      });
+    });
+    txt.addEventListener('input', scheduleSave);
+  }
+
+  function paintSlider(s,v){
+    var pct = Math.max(0, Math.min(100, parseInt(v,10)));
+    s.style.background = 'linear-gradient(90deg,#7c5cff 0%,#3b82f6 '+pct+'%,#2a3247 '+pct+'%,#2a3247 100%)';
+  }
+  function flashSaved(hint, hintT, data){
+    if(!data || Object.keys(data).filter(function(k){return k!=='touched_at';}).length===0){
+      hint.classList.remove('show');
+      hintT.textContent = 'noch nicht gespeichert';
+      return;
+    }
+    hint.classList.add('show');
+    hintT.textContent = 'gespeichert · ' + new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+  }
+  function refreshHint(hint, hintT, data){
+    var filled = data && Object.keys(data).filter(function(k){return k!=='touched_at';}).length>0;
+    if(filled){
+      hint.classList.add('show');
+      var t = data.touched_at ? new Date(data.touched_at) : null;
+      hintT.textContent = 'gespeichert' + (t ? ' · ' + t.toLocaleString('de-DE') : '');
+    }
+  }
+
+  // ========== ANALYSIS TAB ==========
+  function updateSendBar(){
+    var fb = loadFb();
+    var count = 0;
+    SECTION_META.forEach(function(m){
+      var d = fb[m.id];
+      if(d && Object.keys(d).filter(function(k){return k!=='touched_at';}).length>0) count++;
+    });
+    var bar = document.getElementById('fbSendBar');
+    var cnt = document.getElementById('fbSendCounter');
+    if(!bar) return;
+    if(count===0){ bar.classList.add('empty'); return; }
+    bar.classList.remove('empty');
+    cnt.textContent = count + ' Sektion' + (count===1?'':'en') + ' bewertet';
+  }
+
+  function updateAnalysis(){
+    var fb = loadFb();
+    var stats = document.getElementById('fbStats');
+    var overview = document.getElementById('fbOverview');
+    var empty = document.getElementById('fbEmpty');
+    if(!stats || !overview) return;
+
+    var zs=[], rs=[], hs=[], textCount=0;
+    var perSection = {};
+    SECTION_META.forEach(function(m){
+      var d = fb[m.id] || {};
+      var filled = Object.keys(d).filter(function(k){return k!=='touched_at';}).length>0;
+      if(filled){
+        if(typeof d.z==='number') zs.push(d.z);
+        if(typeof d.r==='number') rs.push(d.r);
+        if(typeof d.h==='number') hs.push(d.h);
+        if(d.text) textCount++;
+      }
+      perSection[m.id] = d;
+    });
+
+    if(zs.length===0 && rs.length===0 && hs.length===0 && textCount===0){
+      stats.innerHTML='';
+      overview.innerHTML='';
+      empty.style.display='block';
+      return;
+    }
+    empty.style.display='none';
+
+    var avg = function(a){ if(a.length===0) return '–'; return Math.round(a.reduce(function(x,y){return x+y;},0)/a.length); };
+    var majorCount = hs.filter(function(x){return x===100;}).length;
+    var highRelLowAgree = 0;
+    SECTION_META.forEach(function(m){
+      var d = perSection[m.id];
+      if(typeof d.r==='number' && typeof d.z==='number' && d.r>=70 && d.z<=40) highRelLowAgree++;
+    });
+
+    stats.innerHTML = (
+      '<div class="fb-stat"><div class="fb-stat-val">'+avg(zs)+'</div><div class="fb-stat-lab">Ø Zustimmung</div></div>'+
+      '<div class="fb-stat"><div class="fb-stat-val">'+avg(rs)+'</div><div class="fb-stat-lab">Ø Relevanz</div></div>'+
+      '<div class="fb-stat"><div class="fb-stat-val" style="background:var(--grad-bad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">'+majorCount+'</div><div class="fb-stat-lab">Major-Nacharbeit</div></div>'+
+      '<div class="fb-stat"><div class="fb-stat-val" style="background:var(--grad-mid);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">'+highRelLowAgree+'</div><div class="fb-stat-lab">Divergenz-Flags</div></div>'+
+      '<div class="fb-stat"><div class="fb-stat-val">'+textCount+'</div><div class="fb-stat-lab">Freitext-Einträge</div></div>'
+    );
+
+    var rows = '<div class="fb-section-row" style="background:transparent;border:none;padding:0 16px 4px;font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em">'+
+      '<div>Sektion</div><div class="fb-sval">Zust.</div><div class="fb-sval">Rel.</div><div class="fb-shand">Handlung</div></div>';
+    SECTION_META.forEach(function(m){
+      var d = perSection[m.id];
+      var filled = d && Object.keys(d).filter(function(k){return k!=='touched_at';}).length>0;
+      var hLabel = typeof d.h==='number' ? (d.h===0?'keiner':(d.h===50?'minor':'MAJOR')) : '—';
+      var hClass = typeof d.h==='number' ? (d.h===0?'keiner':(d.h===50?'minor':'major')) : 'none';
+      var divFlag = (typeof d.r==='number' && typeof d.z==='number' && d.r>=70 && d.z<=40)
+        ? '<span class="fb-divergenz-flag">hohe Relevanz · niedrige Zust.</span>' : '';
+      rows += '<div class="fb-section-row'+(filled?'':' empty')+'" onclick="fbJump(\''+m.id+'\')">'+
+        '<div class="fb-sname">'+escapeHtml(m.name)+divFlag+'</div>'+
+        '<div class="fb-sval">'+(typeof d.z==='number'?d.z:'–')+'</div>'+
+        '<div class="fb-sval">'+(typeof d.r==='number'?d.r:'–')+'</div>'+
+        '<div class="fb-shand '+hClass+'">'+hLabel+'</div>'+
+      '</div>';
+    });
+    overview.innerHTML = rows;
+  }
+
+  window.fbJump = function(id){
+    var btn = document.querySelector('nav button[data-tab="'+id+'"]');
+    if(btn) btn.click();
+  };
+
+  // ========== EXPORT ==========
+  function buildPayload(){
+    var fb = loadFb();
+    var out = {
+      audit: 'BÖHM Gruppe — 12D SuperBrain Audit',
+      audit_version: AUDIT_VERSION,
+      audit_url: location.href.split('#')[0].split('?')[0],
+      feedback_generated: new Date().toISOString(),
+      note: 'Persönliche Lesart für den Dialog — keine Audit-Bewertung. Lokal erstellt im Browser.',
+      sections: []
+    };
+    SECTION_META.forEach(function(m){
+      var d = fb[m.id];
+      if(!d || Object.keys(d).filter(function(k){return k!=='touched_at';}).length===0) return;
+      out.sections.push({
+        id: m.id,
+        name: m.name,
+        zustimmung: (typeof d.z==='number')?d.z:null,
+        relevanz:  (typeof d.r==='number')?d.r:null,
+        handlungsbedarf: (typeof d.h==='number')
+          ? (d.h===0?'keiner':(d.h===50?'minor':'major'))
+          : null,
+        kommentar: d.text || null,
+        zeitpunkt: d.touched_at || null
+      });
+    });
+    return out;
+  }
+
+  function toMarkdown(p){
+    var md = '# Feedback zum Audit — '+p.audit+'\n\n';
+    md += '**Version:** '+p.audit_version+'\n';
+    md += '**Quelle:** '+p.audit_url+'\n';
+    md += '**Erstellt:** '+new Date(p.feedback_generated).toLocaleString('de-DE')+'\n\n';
+    md += '> '+p.note+'\n\n';
+    if(p.sections.length===0){ md += '_Kein Feedback erfasst._\n'; return md; }
+    md += '## Übersicht\n\n';
+    md += '| Sektion | Zustimmung | Relevanz | Handlungsbedarf |\n|---|---:|---:|---|\n';
+    p.sections.forEach(function(s){
+      md += '| '+s.name+' | '+(s.zustimmung==null?'—':s.zustimmung)+' | '+(s.relevanz==null?'—':s.relevanz)+' | '+(s.handlungsbedarf||'—')+' |\n';
+    });
+    md += '\n## Kommentare\n\n';
+    var any=false;
+    p.sections.forEach(function(s){
+      if(s.kommentar){
+        any=true;
+        md += '### '+s.name+'\n\n'+s.kommentar+'\n\n';
+      }
+    });
+    if(!any) md += '_Keine Freitext-Kommentare._\n';
+    return md;
+  }
+
+  window.fbDownload = function(fmt){
+    var p = buildPayload();
+    var content, mime, name;
+    var ts = new Date().toISOString().slice(0,10);
+    if(fmt==='json'){
+      content = JSON.stringify(p, null, 2);
+      mime = 'application/json';
+      name = 'boehm-audit-feedback-'+ts+'.json';
+    } else {
+      content = toMarkdown(p);
+      mime = 'text/markdown';
+      name = 'boehm-audit-feedback-'+ts+'.md';
+    }
+    var blob = new Blob([content], {type: mime+';charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 100);
+  };
+
+  window.fbMailto = function(){
+    var p = buildPayload();
+    if(p.sections.length===0){
+      alert('Noch kein Feedback erfasst. Öffne eine Sektion und nutze den Feedback-Block.');
+      return;
+    }
+    var md = toMarkdown(p);
+    var subject = 'Feedback zum BÖHM 12D Audit — '+new Date().toLocaleDateString('de-DE');
+    var body = md;
+    if(body.length > 1800) body = body.slice(0,1800) + '\n\n[... Bitte JSON-/MD-Export anhängen — Mail-Limit erreicht ...]';
+    var href = 'mailto:'+AUDITOR_EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    window.location.href = href;
+  };
+
+  window.fbReset = function(){
+    if(!confirm('Alles lokal gespeicherte Feedback löschen? Das kann nicht rückgängig gemacht werden.')) return;
+    localStorage.removeItem(FB_KEY);
+    location.reload();
+  };
+
+  // ========== INIT ==========
+  document.addEventListener('DOMContentLoaded', function(){
+    SECTION_META.forEach(buildBlock);
+    updateSendBar();
+    updateAnalysis();
+  });
+  // Already-parsed DOM (if script is at end of body): run immediately
+  if(document.readyState!=='loading'){
+    SECTION_META.forEach(buildBlock);
+    updateSendBar();
+    updateAnalysis();
+  }
+})();
 </script>
 
 </body>
